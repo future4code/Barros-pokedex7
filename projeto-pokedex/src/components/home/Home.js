@@ -9,7 +9,7 @@ function Home() {
     return (
       <div>
         <h1>Home</h1>
-        <button onClick={()=> goToPokedex(navigate)}> POKEDEX</button>
+        <button onClick={()=> goToPokedex(navigate)}>GO TO POKEDEX</button>
       </div>
     );
   }

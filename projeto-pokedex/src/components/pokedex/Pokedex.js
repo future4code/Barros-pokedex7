@@ -11,7 +11,7 @@ function Pokedex() {
     return (
       <div>
         <h1>POKEDEX</h1>
-        <button onClick={()=> goToHome(navigate)}> HOME</button>
+        <button onClick={()=> goToHome(navigate)}> GO TO HOME</button>
       </div>
     );
   }
