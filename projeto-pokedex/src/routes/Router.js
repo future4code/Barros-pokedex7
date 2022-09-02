@@ -1,7 +1,7 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Home from '../components/home/Home'
-import Pokedex from '../components/pokedex/Pokedex'
+import { BrowserRouter,Routes, Route } from 'react-router-dom'
+import Home from '../Screens/home/Home'
+import Pokedex from '../Screens/pokedex/Pokedex'
 
 
 const Router = () => {
