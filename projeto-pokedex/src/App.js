@@ -10,8 +10,6 @@ function App() {
     <div>
       <SearchAppBar/>
       <Router />
-      <Heelloo />
-  <Card></Card>
     </div>
   );
 }
