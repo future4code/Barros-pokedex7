@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {goToPokedex} from "../../routes/Coordinator"
 import { useNavigate } from "react-router-dom";
 import Grid from '@mui/material/Grid';
@@ -10,6 +10,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import styled from "styled-components";
+import GlobalStateContext from "../../context/GlobalContext";
 
 const HeaderHome = styled.section`
   text-align: center;
@@ -21,9 +22,11 @@ const HeaderHome = styled.section`
 
 
 function Home() {
-  const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
   const navigate = useNavigate()
+  const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const [pokemon, setPokemon] = useContext(GlobalStateContext)
+
+  
   
     return (
       <div>
