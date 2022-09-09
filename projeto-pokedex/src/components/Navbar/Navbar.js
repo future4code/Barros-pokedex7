@@ -78,6 +78,7 @@ export default function Navbar({pokemonFilter}) {
               />
             </Search>
           </Box>
+
         </Toolbar>
       </AppBar>
     </Box>
