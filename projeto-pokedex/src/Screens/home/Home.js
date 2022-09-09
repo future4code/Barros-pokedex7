@@ -23,7 +23,7 @@ const HeaderHome = styled.section`
 
 function Home() {
   const navigate = useNavigate()
-  const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  //const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const [pokemon, setPokemon] = useContext(GlobalStateContext)
 
   
@@ -40,7 +40,7 @@ function Home() {
       <Container sx={{ py: 8 }} maxWidth="md">
       {/* End hero unit */}
         <Grid container spacing={9}>
-          {cards.map((card) => (
+          {pokemon.map((card) => (
             <Grid item key={card} xs={12} sm={6} md={4}>
               <Card
                 sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
@@ -51,12 +51,12 @@ function Home() {
                     // 16:9
                     pt: '0%',
                   }}
-                  image="https://www.kindpng.com/picc/m/9-97659_charmander-pikachu-gif-pokmon-pixel-art-pixel-art.png"
+                  image={pokemon.sprites.front_default}
                   alt="random"
                 />
                 <CardContent sx={{ flexGrow: 1 }}>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Pokemon
+                  {pokemon.name}
                   </Typography>
                 </CardContent>
                 <CardActions>
