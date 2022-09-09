@@ -1,16 +1,16 @@
 import React from 'react';
 import Router from './routes/Router';
 import SearchAppBar from './components/Navbar/Navbar';
-import { Card } from './components/CardPokemon/CardPokemon';
+import GlobalState from './context/GlobalState';
+import { CardPokemon } from './Screens/home/CardPokemon/Styled';
 
 
 function App() {
 
   return (
-    <div>
-      <SearchAppBar/>
+    <GlobalState>
       <Router />
-    </div>
+    </GlobalState>
   );
 }
 
