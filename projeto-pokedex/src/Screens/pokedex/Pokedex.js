@@ -1,15 +1,13 @@
-import React from "react";
+import React, {useContext} from "react";
 import {goToHome} from "../../routes/Coordinator"
 import { useNavigate } from "react-router-dom";
 import Grid from '@mui/material/Grid';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import styled from "styled-components";
+import GlobalStateContext from "../../context/GlobalContext";
+import PokemonCard from "../home/CardPokemon/CardPokemon";
+import { Skeletons } from "../home/skeletons/Skeletons";
 
 const HeaderHome = styled.section`
   text-align: center;
@@ -21,9 +19,18 @@ const HeaderHome = styled.section`
 
 
 function Pokedex() {
-  const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   const navigate = useNavigate()
+  const { pokedex, setPokedex } = useContext(GlobalStateContext)
+
+  const clickRemove = (creature) => {
+    const pokedexIndex = pokedex.findIndex((item) => item.id === creature.id)
+    const newPokedex = [...pokedex]
+
+    newPokedex.splice(pokedexIndex, 1)
+    
+    setPokedex(newPokedex)
+  }
   
     return (
       <div>
@@ -35,34 +42,15 @@ function Pokedex() {
     
     <main>
       <Container sx={{ py: 8 }} maxWidth="md">
-      {/* End hero unit */}
-        <Grid container spacing={9}>
-          {cards.map((card) => (
-            <Grid item key={card} xs={12} sm={6} md={4}>
-              <Card
-                sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-              >
-                <CardMedia
-                  component="img"
-                  sx={{
-                    // 16:9
-                    pt: '0%',
-                  }}
-                  image="https://www.kindpng.com/picc/m/9-97659_charmander-pikachu-gif-pokmon-pixel-art-pixel-art.png"
-                  alt="random"
-                />
-                <CardContent sx={{ flexGrow: 1 }}>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    Pokemon
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button size="small">Capturar</Button>
-                  <Button size="small">Detalhes</Button>
-                </CardActions>
-              </Card>
-            </Grid>
-          ))}
+        <Grid container spacing={3}>
+          {pokedex.length === 0 ? (
+            <Skeletons />
+          ) : (
+            pokedex && pokedex.map((pokemons) => {
+              return <Grid item xs={16} sm={6} md={4} lg={2}>
+              <PokemonCard key={pokemons} pokemon={pokemons.data} />
+              </Grid>
+            }))}
         </Grid>
       </Container>
     </main>

@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Grid } from "@mui/material";
 import { Container } from "@mui/system";
@@ -6,8 +5,6 @@ import Navbar from "../../components/Navbar/Navbar";
 import axios from "axios";
 import PokemonCard from "./CardPokemon/CardPokemon";
 import { Skeletons } from "./skeletons/Skeletons";
-
-
 
 
  const Home = () => {
@@ -38,6 +35,8 @@ import { Skeletons } from "./skeletons/Skeletons";
     setPokemons(filteredPokemons);
   };
 
+
+
   return (
     <div>
       <Navbar pokemonFilter={pokemonFilter} />
@@ -46,12 +45,11 @@ import { Skeletons } from "./skeletons/Skeletons";
           {pokemons.length === 0 ? (
             <Skeletons />
           ) : (
-            pokemons.map((pokemon, key) => (
-              <Grid item xs={12} sm={6} md={4} lg={2} key={key}>
-                <PokemonCard name={pokemon.data.name} image={pokemon.data.sprites.front_default} types={pokemon.data.types} />
+            pokemons && pokemons.map((pokemons) => {
+              return <Grid item xs={16} sm={6} md={4} lg={2}>
+              <PokemonCard key={pokemons} pokemon={pokemons.data} />
               </Grid>
-            ))
-          )}
+            }))}
         </Grid>
       </Container>
     </div>
