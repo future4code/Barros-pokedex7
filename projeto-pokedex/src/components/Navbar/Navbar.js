@@ -9,6 +9,8 @@ import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import Logo from '../../imgs/pokemon-logo.png'
+import { useNavigate } from 'react-router-dom';
+import { goToPokedex } from '../../routes/Coordinator';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -53,6 +55,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Navbar({pokemonFilter}) {
+  const navigate = useNavigate()
   return (
     <Box sx={{ flexGrow: 1,marginBottom: "2em" }}>
       <AppBar position="static">
@@ -66,6 +69,7 @@ export default function Navbar({pokemonFilter}) {
               sx={{ mr: 2 }}
             >
               <MenuIcon/>
+              {/* <button onClick={()=>goToPokedex(navigate)}> IR PARA POKEDEX</button> */}
             </IconButton>
             <Box component="img" src={Logo} height="3em" justifyContent="initial"   />
             <Search  onChange={(e) => pokemonFilter(e.target.value)}>
