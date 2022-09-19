@@ -8,7 +8,7 @@ import CardActions from '@mui/material/CardActions';
 import { goToPokedex } from "../../../routes/Coordinator";
 import { useNavigate } from "react-router-dom";
 import GlobalStateContext from "../../../context/GlobalContext"
-
+import { goToPokemonDetail } from "../../../routes/Coordinator";
 
 export default function PokemonCard({  pokemon }) {
 
@@ -23,7 +23,7 @@ export default function PokemonCard({  pokemon }) {
 
     setPokedex(pokemonCaught);
 
-    goToPokedex(navigate)
+    // goToPokedex(navigate)
   }
 
   const typeHandler = () => {
@@ -49,7 +49,7 @@ export default function PokemonCard({  pokemon }) {
       </CardContent>
     <CardActions >
       <button onClick={() => addPokemon(pokemon)}>Capture</button>
-      <button size="small">Learn More</button>
+      <button onClick={()=>goToPokemonDetail(navigate, pokemon.name)} size="small">Learn More</button>
     </CardActions>
     </CardActionArea>
     </Card>
